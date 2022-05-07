@@ -50,6 +50,10 @@ struct ContentView: View {
                     .font(.caption)
 
                 Text("\(wakeUpTime(date: wakeUp))")
+
+                Text(wakeUp, format: .dateTime.hour().minute())
+
+                Text(wakeUp, format: .dateTime.day().month().year())
             } header: {
                 Text("Date Manipulation")
             }
