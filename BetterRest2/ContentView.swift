@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var wakeUp = Date.now
     @State private var wakeUp2 = Date.now
     @State private var wakeUp3 = Date.now
+    @State private var wakeUp4 = Date.now
 
     var body: some View {
         Form {
@@ -24,6 +25,8 @@ struct ContentView: View {
                 .labelsHidden()
 
             DatePicker("Date 3", selection: $wakeUp3, displayedComponents: .date)
+
+            DatePicker("Time", selection: $wakeUp4, displayedComponents: .hourAndMinute)
         }
     }
 }
