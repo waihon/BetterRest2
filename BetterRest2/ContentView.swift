@@ -19,28 +19,40 @@ struct ContentView: View {
 
     var body: some View {
         Form {
-            Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
-                .padding()
+            Section {
+                Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+                    .padding()
+            } header: {
+                Text("Stepper")
+            }
 
-            DatePicker("Date", selection: $wakeUp)
+            Section {
+                DatePicker("Date", selection: $wakeUp)
 
-            DatePicker("Date 2", selection: $wakeUp2)
-                .labelsHidden()
+                DatePicker("Date 2", selection: $wakeUp2)
+                    .labelsHidden()
 
-            DatePicker("Date 3", selection: $wakeUp3, displayedComponents: .date)
+                DatePicker("Date 3", selection: $wakeUp3, displayedComponents: .date)
 
-            DatePicker("Time", selection: $wakeUp4, displayedComponents: .hourAndMinute)
+                DatePicker("Time", selection: $wakeUp4, displayedComponents: .hourAndMinute)
 
-            DatePicker("Birthday", selection: $birthday, in: ...Date.now, displayedComponents: .date)
+                DatePicker("Birthday", selection: $birthday, in: ...Date.now, displayedComponents: .date)
 
-            DatePicker("Pregnancy due", selection: $pregnancyDue, in: Date.now..., displayedComponents: .date)
+                DatePicker("Pregnancy due", selection: $pregnancyDue, in: Date.now..., displayedComponents: .date)
 
-            DatePicker("Appointment", selection: $appointment, in: Date.now...Date.now.addingTimeInterval(6 * 86_400), displayedComponents: .date)
+                DatePicker("Appointment", selection: $appointment, in: Date.now...Date.now.addingTimeInterval(6 * 86_400), displayedComponents: .date)
+            } header: {
+                Text("Date Picker")
+            }
 
-            Text("\(wakeUpTime(hour: 8, minute: 0))")
-                .font(.caption)
+            Section {
+                Text("\(wakeUpTime(hour: 8, minute: 0))")
+                    .font(.caption)
 
-            Text("\(wakeUpTime(date: wakeUp))")
+                Text("\(wakeUpTime(date: wakeUp))")
+            } header: {
+                Text("Date Manipulation")
+            }
         }
     }
 
