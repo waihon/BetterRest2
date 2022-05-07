@@ -39,6 +39,8 @@ struct ContentView: View {
 
             Text("\(wakeUpTime(hour: 8, minute: 0))")
                 .font(.caption)
+
+            Text("\(wakeUpTime(date: wakeUp))")
         }
     }
 
@@ -49,6 +51,14 @@ struct ContentView: View {
         components.minute = minute
 
         return Calendar.current.date(from: components) ?? Date.now
+    }
+
+    func wakeUpTime(date: Date) -> String {
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let hour = components.hour ?? 0
+        let minute = components.minute ?? 0
+
+        return "\(hour):\(minute)"
     }
 }
 
