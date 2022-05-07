@@ -54,6 +54,12 @@ struct ContentView: View {
                 Text(wakeUp, format: .dateTime.hour().minute())
 
                 Text(wakeUp, format: .dateTime.day().month().year())
+
+                Text(wakeUp.formatted(date: .long, time: .shortened))
+
+                Text(wakeUp.formatted(date: .complete, time: .omitted))
+
+                Text(wakeUp.formatted(date: .omitted, time: .complete))
             } header: {
                 Text("Date Manipulation")
             }
