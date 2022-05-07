@@ -36,7 +36,19 @@ struct ContentView: View {
             DatePicker("Pregnancy due", selection: $pregnancyDue, in: Date.now..., displayedComponents: .date)
 
             DatePicker("Appointment", selection: $appointment, in: Date.now...Date.now.addingTimeInterval(6 * 86_400), displayedComponents: .date)
+
+            Text("\(wakeUpTime(hour: 8, minute: 0))")
+                .font(.caption)
         }
+    }
+
+    func wakeUpTime(hour: Int, minute: Int) -> Date {
+        var components = DateComponents()
+
+        components.hour = hour
+        components.minute = minute
+
+        return Calendar.current.date(from: components) ?? Date.now
     }
 }
 
