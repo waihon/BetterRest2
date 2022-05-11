@@ -42,6 +42,14 @@ struct ContentView: View {
     }
 
     func calculateBedtime() {
+        do {
+            let config = MLModelConfiguration()
+            let model = try SleepCalculator(configuration: config)
+
+            // more code here
+        } catch {
+            // something went wrong!
+        }
     }
 }
 
