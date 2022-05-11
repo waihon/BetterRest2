@@ -65,11 +65,18 @@ struct ContentView: View {
             // Compute sleep time from wake up datetime and the actual amount
             // of sleep in seconds (returned by the prediction).
             let sleepTime = wakeUp - prediction.actualSleep
+
+            alertTitle = "Your ideal bedtime is..."
+            alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
         } catch {
             // Using Core ML can throw errors in two places:
             // 1. Loading the model
             // 2. When we ask for preductions
+            alertTitle = "Error"
+            alertMessage = "SOrry, there was a problem calculating your bedtime."
         }
+
+        showingAlert = true
     }
 }
 
