@@ -34,6 +34,9 @@ struct ContentView: View {
             }
             .padding()
             .navigationTitle("BetterRest")
+            .toolbar {
+                Button("Calculate", action: calculateBedtime)
+            }
         }
     }
 
