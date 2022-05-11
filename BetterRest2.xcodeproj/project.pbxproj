@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F667BE2282C61E100391ED0 /* BetterRest2 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4F667BE1282C61E100391ED0 /* BetterRest2 1.mlmodel */; };
 		4FE0FB0928242ADA00C6A995 /* BetterRest2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0FB0828242ADA00C6A995 /* BetterRest2App.swift */; };
 		4FE0FB0B28242ADA00C6A995 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0FB0A28242ADA00C6A995 /* ContentView.swift */; };
 		4FE0FB0D28242ADC00C6A995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE0FB0C28242ADC00C6A995 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F667BE1282C61E100391ED0 /* BetterRest2 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "BetterRest2 1.mlmodel"; sourceTree = SOURCE_ROOT; };
 		4FE0FB0528242ADA00C6A995 /* BetterRest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE0FB0828242ADA00C6A995 /* BetterRest2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterRest2App.swift; sourceTree = "<group>"; };
 		4FE0FB0A28242ADA00C6A995 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				4FE0FB0828242ADA00C6A995 /* BetterRest2App.swift */,
 				4FE0FB0A28242ADA00C6A995 /* ContentView.swift */,
+				4F667BE1282C61E100391ED0 /* BetterRest2 1.mlmodel */,
 				4FE0FB0C28242ADC00C6A995 /* Assets.xcassets */,
 				4FE0FB0E28242ADC00C6A995 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FE0FB0B28242ADA00C6A995 /* ContentView.swift in Sources */,
+				4F667BE2282C61E100391ED0 /* BetterRest2 1.mlmodel in Sources */,
 				4FE0FB0928242ADA00C6A995 /* BetterRest2App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
