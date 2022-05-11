@@ -26,7 +26,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
+            Form {
                 Text("When do you want to wake up?")
                     .font(.headline)
 
@@ -44,7 +44,6 @@ struct ContentView: View {
                 Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
 
             }
-            .padding()
             .navigationTitle("BetterRest")
             .toolbar {
                 Button("Calculate", action: calculateBedtime)
