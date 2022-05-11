@@ -43,12 +43,16 @@ struct ContentView: View {
 
     func calculateBedtime() {
         do {
+            // The configuration is here in case we need to enable a handful
+            // of what are fairly obscure options.
             let config = MLModelConfiguration()
             let model = try SleepCalculator(configuration: config)
 
             // more code here
         } catch {
-            // something went wrong!
+            // Using Core ML can throw errors in two places:
+            // 1. Loading the model
+            // 2. When we ask for preductions
         }
     }
 }
