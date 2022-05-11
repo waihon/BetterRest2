@@ -33,7 +33,11 @@ struct ContentView: View {
 
             }
             .padding()
+            .navigationTitle("BetterRest")
         }
+    }
+
+    func calculateBedtime() {
     }
 }
 
