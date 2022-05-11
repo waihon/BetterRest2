@@ -48,7 +48,19 @@ struct ContentView: View {
             let config = MLModelConfiguration()
             let model = try SleepCalculator(configuration: config)
 
-            // more code here
+            // Extract hour and minute from wakeUp which contains date and time
+            // among others.
+            let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
+            let hour = (components.hour ?? 0) * 60 * 60
+            let minute = (components.minute ?? 0) * 60
+
+            // Convert our values to Double to be compatible with that of the
+            // model and feed into Core ML and see what comes out.
+            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
+
+            // Compute sleep time from wake up datetime and the actual amount
+            // of sleep in seconds (returned by the prediction).
+            let sleepTime = wakeUp - prediction.actualSleep
         } catch {
             // Using Core ML can throw errors in two places:
             // 1. Loading the model
