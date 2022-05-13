@@ -32,6 +32,14 @@ struct ContentView: View {
         return Double(coffeeAmount + 1)
     }
 
+    var bedtime: String {
+        if let bedtime = calculateBedtime() {
+            return bedtime.formatted(date: .omitted, time: .shortened)
+        } else {
+            return "Unknown"
+        }
+    }
+
     var body: some View {
         NavigationView {
             Form {
@@ -60,11 +68,15 @@ struct ContentView: View {
                     Text("Daily coffee intake")
                         .font(.headline)
                 }
+
+                Section {
+                    Text(bedtime)
+                        .font(.largeTitle)
+                } header: {
+                    Text("Your ideal bedtime is")
+                }
             }
             .navigationTitle("BetterRest")
-            .toolbar {
-                Button("Calculate", action: calculateBedtime)
-            }
             .alert(alertTitle, isPresented: $showingAlert) {
                 Button("OK") { }
             } message: {
@@ -73,7 +85,7 @@ struct ContentView: View {
         }
     }
 
-    func calculateBedtime() {
+    func calculateBedtime() -> Date? {
         do {
             // The configuration is here in case we need to enable a handful
             // of what are fairly obscure options.
@@ -94,17 +106,13 @@ struct ContentView: View {
             // of sleep in seconds (returned by the prediction).
             let sleepTime = wakeUp - prediction.actualSleep
 
-            alertTitle = "Your ideal bedtime is..."
-            alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
+            return sleepTime
         } catch {
             // Using Core ML can throw errors in two places:
             // 1. Loading the model
             // 2. When we ask for preductions
-            alertTitle = "Error"
-            alertMessage = "Sorry, there was a problem calculating your bedtime."
+            return nil
         }
-
-        showingAlert = true
     }
 }
 
