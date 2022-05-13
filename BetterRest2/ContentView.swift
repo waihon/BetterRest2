@@ -13,10 +13,6 @@ struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 0 // 1 cup
 
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
-
     static var defaultWakeTime: Date {
         var components = DateComponents()
         components.hour = 7
@@ -77,11 +73,6 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("BetterRest")
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("OK") { }
-            } message: {
-                Text(alertMessage)
-            }
         }
     }
 
