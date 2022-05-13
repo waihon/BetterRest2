@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
-    @State private var coffeeAmount = 1
+    @State private var coffeeAmount = 0 // 1 cup
 
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -22,6 +22,14 @@ struct ContentView: View {
         components.hour = 7
         components.minute = 0
         return Calendar.current.date(from: components) ?? Date.now
+    }
+
+    var numberOfCups: Double {
+        // Picker index 0 --> 1 cup
+        // Picker index 1 --> 2 cups
+        // ...
+        // Picker index 19 --> 20 cups
+        return Double(coffeeAmount + 1)
     }
 
     var body: some View {
@@ -43,7 +51,11 @@ struct ContentView: View {
                 }
 
                 Section {
-                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                    Picker("Number of cups", selection: $coffeeAmount) {
+                        ForEach(1..<21) {
+                            Text($0 == 1 ? "1 cup" : "\($0) cups")
+                        }
+                    }
                 } header: {
                     Text("Daily coffee intake")
                         .font(.headline)
@@ -76,7 +88,7 @@ struct ContentView: View {
 
             // Convert our values to Double to be compatible with that of the
             // model and feed into Core ML and see what comes out.
-            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
+            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: numberOfCups)
 
             // Compute sleep time from wake up datetime and the actual amount
             // of sleep in seconds (returned by the prediction).
@@ -89,7 +101,7 @@ struct ContentView: View {
             // 1. Loading the model
             // 2. When we ask for preductions
             alertTitle = "Error"
-            alertMessage = "SOrry, there was a problem calculating your bedtime."
+            alertMessage = "Sorry, there was a problem calculating your bedtime."
         }
 
         showingAlert = true
